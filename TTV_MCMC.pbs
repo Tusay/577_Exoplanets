@@ -1,0 +1,27 @@
+#!/bin/bash
+#PBS -A open
+#PBS -l nodes=1:ppn=1:stmem
+#PBS -l pmem=250gb
+#PBS -l walltime=48:00:00
+#PBS -j oe
+#PBS -M nxt5197@psu.edu
+#PBS -N TTV_MCMC
+#PBS -o TTV_MCMC_outlog                  # Output file.
+
+echo "Starting job $PBS_JOBNAME"
+date
+echo "Job id: $PBS_JOBID"
+echo " "
+echo "Changing into $PBS_O_WORKDIR"
+cd $PBS_O_WORKDIR
+echo " "
+echo "Executing script..."
+source /storage/home/nxt5197/work/environments/tSETI/setup
+echo " "
+date
+echo " "
+python3 /storage/home/nxt5197/work/577_exoplanets/TTVs.py
+echo " "
+date
+echo " "
+echo "Game over. Thanks for playing."
